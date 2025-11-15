@@ -28,3 +28,26 @@ No real user posts or personal data will ever be uploaded to this repository.
 ## Files in this Directory
 - `samples/` — contains small synthetic, anonymised text examples.
 - `README.md` — this file.
+# Dataset Plan
+
+This project uses **publicly available, anonymised, or synthetic datasets only**.
+Raw social media data is never uploaded to this repository.
+
+## Datasets Considered
+
+### 1. CLPsych (Reddit)
+- Requires access request.
+- Will load externally.
+- Only synthetic samples stored here.
+
+### 2. Dreaddit
+- Public dataset.
+- Not included directly for privacy reasons.
+
+### 3. Synthetic Data
+- Safe manually-created samples.
+- Stored in `data/samples/`.
+
+## Notes
+- Never commit real user posts.
+- All data must be anonymised.
