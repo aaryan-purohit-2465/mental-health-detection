@@ -1,7 +1,9 @@
 import json
 import torch
 from torch.utils.data import Dataset, DataLoader
-from transformers import AutoTokenizer, AutoModelForSequenceClassification, AdamW
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
+from torch.optim import AdamW
+from torch.optim import AdamW
 import yaml
 import os
 
@@ -35,16 +37,19 @@ class MentalHealthDataset(Dataset):
 
 def train(config_path="configs/train_config.yaml"):
     # Load config
+        # Load config
     cfg = yaml.safe_load(open(config_path))
 
-    model_name = cfg["model_name"]
+    model_name = cfg.get("model_name", "distilbert-base-uncased")
     train_path = cfg["data"]["train_path"]
 
-    epochs = cfg["training"]["epochs"]
-    batch_size = cfg["training"]["batch_size"]
-    lr = cfg["training"]["learning_rate"]
-    max_length = cfg["data"]["max_length"]
-    output_dir = cfg["save"]["output_dir"]
+    # ensure correct types (yaml may parse some values as strings)
+    epochs = int(cfg["training"].get("epochs", 2))
+    batch_size = int(cfg["training"].get("batch_size", 8))
+    lr = float(cfg["training"].get("learning_rate", 2e-5))
+    max_length = int(cfg["data"].get("max_length", 128))
+    output_dir = cfg["save"].get("output_dir", "checkpoints/demo_model")
+
 
     # Load tokenizer & model
     tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -56,6 +61,7 @@ def train(config_path="configs/train_config.yaml"):
     loader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
 
     optimizer = AdamW(model.parameters(), lr=lr)
+
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
     model.to(device)
