@@ -11,3 +11,15 @@ data:
 
 save:
   output_dir: "checkpoints/demo_model"
+  # existing...
+training:
+  epochs: 2
+  batch_size: 8
+  learning_rate: 2e-5
+
+# new
+multitask: true
+emo_labels: 6
+mh_labels: 3
+emo_weight: 0.4
+

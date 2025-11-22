@@ -1,1 +1,26 @@
-checkpoints/demo_model/
+# Ignore model checkpoints
+checkpoints/
+checkpoints/*
+
+# But keep the folder itself
+!checkpoints/.gitkeep
+
+# Python environment
+venv/
+venv/*
+
+# Cache + temp files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.tmp
+
+# Jupyter & logs
+.ipynb_checkpoints/
+logs/
+*.log
+
+# OS / editor files
+.DS_Store
+.vscode/
