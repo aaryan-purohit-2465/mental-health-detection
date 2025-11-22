@@ -5,7 +5,7 @@ import os
 from torch.utils.data import Dataset, DataLoader
 from torch.optim import AdamW
 from transformers import AutoTokenizer
-from src.models.model import MultiTaskClassifier
+from .model import MultiTaskClassifier
 import torch.nn.functional as F
 
 class SimpleDataset(Dataset):
