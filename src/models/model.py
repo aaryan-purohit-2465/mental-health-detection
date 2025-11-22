@@ -2,26 +2,23 @@ import torch
 import torch.nn as nn
 from transformers import AutoModel
 
-class MentalHealthClassifier(nn.Module):
-    """
-    Basic DistilBERT-based classifier for mental health detection.
-    """
-
-    def __init__(self, model_name: str = "distilbert-base-uncased", num_labels: int = 3):
+class MultiTaskClassifier(nn.Module):
+    def __init__(self, model_name="distilbert-base-uncased", mh_labels=3, emo_labels=6):
         super().__init__()
         self.bert = AutoModel.from_pretrained(model_name)
-        hidden_size = self.bert.config.hidden_size
+        hid = self.bert.config.hidden_size
 
-        # Classifier for depression / anxiety / neutral
-        self.classifier = nn.Linear(hidden_size, num_labels)
+        # heads
+        self.mh_head = nn.Linear(hid, mh_labels)
+        self.emo_head = nn.Linear(hid, emo_labels)
 
-    def forward(self, input_ids, attention_mask):
-        outputs = self.bert(input_ids=input_ids, attention_mask=attention_mask)
-        pooled_output = outputs.last_hidden_state[:, 0]   # CLS token output
-        logits = self.classifier(pooled_output)
-        return logits
+    def forward(self, input_ids=None, attention_mask=None):
+        out = self.bert(input_ids=input_ids, attention_mask=attention_mask)
+        rep = out.last_hidden_state[:, 0]
+        mh_logits = self.mh_head(rep)
+        emo_logits = self.emo_head(rep)
+        return mh_logits, emo_logits
 
 
-# Quick demo check
 if __name__ == "__main__":
-    print("Model skeleton created successfully.")
+    print("multi task model ready")
