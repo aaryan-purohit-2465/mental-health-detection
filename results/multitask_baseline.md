@@ -12,3 +12,18 @@
 ### Notes
 - Tiny synthetic set — numbers are only to confirm pipeline works.
 - Checkpoint saved locally at `checkpoints/demo_model/`.
+from sklearn.metrics import classification_report, confusion_matrix
+import numpy as np
+
+print("Classification Report:\n")
+
+# Convert predictions + labels to numpy arrays
+y_true = np.array(labels)
+y_pred = np.array(preds)
+
+# Print detailed classification metrics
+print(classification_report(y_true, y_pred, digits=2))
+
+# Confusion matrix
+print("\nConfusion Matrix:\n")
+print(confusion_matrix(y_true, y_pred))
