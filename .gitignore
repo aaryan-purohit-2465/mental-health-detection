@@ -1,26 +1,36 @@
-# Ignore model checkpoints
-checkpoints/
-checkpoints/*
-
-# But keep the folder itself
-!checkpoints/.gitkeep
-
-# Python environment
-venv/
-venv/*
-
-# Cache + temp files
+# python
 __pycache__/
-*.pyc
+*.py[cod]
 *.pyo
 *.pyd
-*.tmp
+venv/
+env/
+.venv/
+pip-wheel-metadata/
+*.egg-info/
 
-# Jupyter & logs
-.ipynb_checkpoints/
-logs/
-*.log
+# virtualenv
+venv/
+ENV/
+env.bak/
 
-# OS / editor files
+# Jupyter
+.ipynb_checkpoints
+
+# OS
 .DS_Store
+Thumbs.db
+
+# VS Code
 .vscode/
+
+# Data / models / large artifacts - keep them out of git
+data/
+checkpoints/
+checkpoints/*
+!checkpoints/.gitkeep
+
+# logs and results
+*.log
+results/
+docs/*.pyc
