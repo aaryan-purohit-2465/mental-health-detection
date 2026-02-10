@@ -3,21 +3,15 @@
 A machine-learning based project that predicts whether a piece of text shows possible mental distress or is neutral.
 This version includes a BERT-based classifier, an evaluation pipeline, and a full Streamlit UI for real-time predictions.
 
-##🚀 Features
-
+## 🚀 Features
 Binary text classification (Neutral vs Possible Mental Distress)
-
 BERT fine-tuned baseline model
-
 Streamlit UI with confidence scores
-
 Model evaluation: accuracy, F1-score, confusion matrix
-
 Organized, modular repo structure
-
 Local demo model checkpoint included
 
-##📁 Project Structure
+## 📁 Project Structure
 mental-health-detection/
 │
 ├── checkpoints/              # Saved model (demo_model/)
@@ -68,7 +62,7 @@ Confusion Matrix
 The evaluation is performed on a small sample dataset (demo purpose).
 
 
-##🎯 Purpose of This Project
+## 🎯 Purpose of This Project
 
 This project was built to explore text classification, mental health detection, and deployment-ready ML workflows with:
 Clean code
@@ -76,6 +70,6 @@ Modular structure
 Real-time inference
 Beginner-friendly design
 
-##📌 Version
+## 📌 Version
 v0.1 — Demo Release (2025-11-28)
 Includes BERT baseline + Streamlit UI + evaluation.
