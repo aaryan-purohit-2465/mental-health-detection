@@ -1,4 +1,4 @@
-#🧠 Mental Health Detection
+# 🧠 Mental Health Detection
 
 A machine-learning based project that predicts whether a piece of text shows possible mental distress or is neutral.
 This version includes a BERT-based classifier, an evaluation pipeline, and a full Streamlit UI for real-time predictions.
